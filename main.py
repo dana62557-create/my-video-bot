@@ -67,7 +67,7 @@ def download_and_send_video(message):
         
     except Exception as e:
         with open('pibble_error.mp4', 'rb') as error_gif:
-        error_text = """૮₍ ˃̵м˂̵ ₎ა Ой, кажется, ссылка указана неверно или видео недоступно! 💔
+            error_text = """૮₍ ˃̵м˂̵ ₎ა Ой, кажется, ссылка указана неверно или видео недоступно! 💔
 
 Проверь её и попробуй отправить ещё раз. 🐾"""
 
