@@ -2,7 +2,7 @@ import os
 import telebot
 from yt_dlp import YoutubeDL
 
-TOKEN = "ТВОЙ_ТОКЕН_БОТА"
+TOKEN = "7697533527:AAFWJCg-BzfA6NC9JTu-2rFRg1rVQ2-p8fI"
 bot = telebot.TeleBot(TOKEN)
 
 @bot.message_handler(commands=['start'])
