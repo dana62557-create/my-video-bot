@@ -67,7 +67,7 @@ def handle_text(message):
         if os.path.exists('video.mp4'):
             os.remove('video.mp4')
 
-if name == "__main__":
+if __name__ == "__main__":
     t = Thread(target=run_flask)
     t.start()
     bot.infinity_polling()
