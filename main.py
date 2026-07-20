@@ -1,15 +1,26 @@
 import os
+from threading import Thread
+from flask import Flask
 import telebot
 from yt_dlp import YoutubeDL
 
 TOKEN = "7697533527:AAFWJCg-BzfA6NC9JTu-2rFRg1rVQ2-p8fI"
 bot = telebot.TeleBot(TOKEN)
 
+app = Flask('')
+
+@app.route('/')
+def home():
+    return "Piblle dowlander is alive! 🐾"
+
+def run_flask():
+    app.run(host='0.0.0.0', port=10000)
+
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
     welcome_text = """૮₍ ˶ᵔ ᵕ ᵔ˶ ₎ა Привет, пиблик! 💕
 
-Я уже в полном ожидании твоей ссылки!
+Я уже в ожидании твоей ссылки!
 
 Отправь её, и через пару секунд твоё видео будет готово к скачиванию. 🐾"""
     bot.send_message(message.chat.id, welcome_text)
@@ -56,4 +67,7 @@ def handle_text(message):
         if os.path.exists('video.mp4'):
             os.remove('video.mp4')
 
-bot.infinity_polling()
+if name == "__main__":
+    t = Thread(target=run_flask)
+    t.start()
+    bot.infinity_polling()
