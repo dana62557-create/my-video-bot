@@ -67,9 +67,7 @@ def download_and_send_video(message):
         
     except Exception as e:
         error_text = """૮₍ ˃̵м˂̵ ₎ა Ой, кажется, ссылка указана неверно или видео недоступно! 💔
-
-Проверь её и попробуй отправить ещё раз. 🐾"""
-
+        Проверь её и попробуй отправить ещё раз. 🐾"""
         bot.send_animation(
             message.chat.id,
             open('pibble_error.mp4', 'rb'),
