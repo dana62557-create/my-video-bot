@@ -1,4 +1,5 @@
 import os
+import requests
 from threading import Thread
 from flask import Flask
 import telebot
@@ -41,15 +42,26 @@ def handle_text(message):
     status_msg = bot.send_message(message.chat.id, "⏳ Ищу видео, подожди секунду...")
     
     try:
-        ydl_opts = {
-            'format': 'best',
-            'outtmpl': 'video.mp4',
-            'max_filesize': 50 * 1024 * 1024,
-            'extractor_args': {'tiktok': {'api_hostname': 'api16-normal-c-useast1a.tiktokv.com'}},
-        }
-        
-        with YoutubeDL(ydl_opts) as ydl:
-            ydl.download([url])
+        if "tiktok.com" in url:
+            api_url = f"https://tikwm.com/api/?url={url}"
+            response = requests.get(api_url).json()
+            
+            if response.get("code") == 0:
+                video_url = response["data"]["play"]
+                video_data = requests.get(video_url).content
+                
+                with open('video.mp4', 'wb') as f:
+                    f.write(video_data)
+            else:
+                raise Exception("TikTok API error")
+        else:
+            ydl_opts = {
+                'format': 'best',
+                'outtmpl': 'video.mp4',
+                'max_filesize': 50 * 1024 * 1024,
+            }
+            with YoutubeDL(ydl_opts) as ydl:
+                ydl.download([url])
             
         with open('video.mp4', 'rb') as video_file:
             bot.send_video(message.chat.id, video_file)
@@ -68,7 +80,7 @@ def handle_text(message):
         if os.path.exists('video.mp4'):
             os.remove('video.mp4')
 
-if __name__ == "__main__":
+if name == "__main__":
     t = Thread(target=run_flask)
     t.start()
     bot.infinity_polling()
