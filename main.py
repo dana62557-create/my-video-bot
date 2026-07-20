@@ -25,7 +25,11 @@ def keep_alive():
 # Команда /start
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
-    bot.reply_to(message, "Привет! Пришли мне ссылку на видео (Instagram, TikTok, Pinterest, YouTube), и я скачаю его в лучшем качестве 🚀")
+    bot.reply_to(message, "૮₍ ˶ᵔ ᵕ ᵔ˶ ₎ა Привет, пиблик! 💕
+
+Я уже в полном ожидании твоей ссылки!
+
+Отправь её, и через пару секунд твоё видео будет готово к скачиванию. 🐾")
 
 # Обработка ссылок и скачивание
 @bot.message_handler(func=lambda message: True)
