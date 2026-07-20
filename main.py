@@ -45,6 +45,8 @@ def handle_text(message):
             'format': 'best',
             'outtmpl': 'video.mp4',
             'max_filesize': 50 * 1024 * 1024,
+            'extractor_args': {'tiktok': {'web_auth': False}},
+            'socket_timeout': 30,
         }
         
         with YoutubeDL(ydl_opts) as ydl:
