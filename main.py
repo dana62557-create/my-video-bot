@@ -39,4 +39,6 @@ def download_and_send_video(message):
         'quiet': True,
         'nocheckcertificate': True
     }
-       
+    if name == "__main__":
+    keep_alive()
+    bot.polling(none_stop=True)
