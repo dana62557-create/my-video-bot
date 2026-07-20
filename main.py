@@ -65,6 +65,6 @@ def download_and_send_video(message):
         bot.edit_message_text(f"❌ Ошибка при скачивании: {e}", chat_id=message.chat.id, message_id=status_msg.message_id)
 
 # Главная команда запуска
-if name == "__main__":
+if __name__ == "__main__":
     keep_alive()
     bot.polling(none_stop=True)
