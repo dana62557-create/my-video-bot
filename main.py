@@ -35,4 +35,8 @@ def download_and_send_video(message):
     ydl_opts = {
         'outtmpl': 'downloaded_video.%(ext)s', 
         'format': 'best',
-        'max_filesize': 48 * 1024 * 1
+        'max_filesize': 48 * 1024 * 1024,
+        'quiet': True,
+        'nocheckcertificate': True
+    }
+       
