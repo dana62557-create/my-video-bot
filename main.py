@@ -65,15 +65,14 @@ def download_and_send_video(message):
         bot.delete_message(message.chat.id, status_msg.message_id)
         os.remove(video_filename)
         
-    except Exception as e:
-        with open('pibblie_error.mp4', 'rb') as error_gif:
-            error_text = """૮₍ ˃̵м˂̵ ₎ა Ой, кажется, ссылка указана неверно или видео недоступно! 💔
+   except Exception as e:
+        error_text = """૮₍ ˃̵м˂̵ ₎ა Ой, кажется, ссылка указана неверно или видео недоступно! 💔
 
 Проверь её и попробуй отправить ещё раз. 🐾"""
 
         bot.send_animation(
             message.chat.id,
-            error_gif,
+            open('pibble_error.mp4', 'rb'),
             caption=error_text
         )
 
