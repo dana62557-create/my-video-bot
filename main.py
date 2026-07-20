@@ -65,7 +65,7 @@ def download_and_send_video(message):
         bot.delete_message(message.chat.id, status_msg.message_id)
         os.remove(video_filename)
         
-   except Exception as e:
+    except Exception as e:
         error_text = """૮₍ ˃̵м˂̵ ₎ა Ой, кажется, ссылка указана неверно или видео недоступно! 💔
 
 Проверь её и попробуй отправить ещё раз. 🐾"""
